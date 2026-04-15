@@ -11,9 +11,9 @@ services:
       - "5984:5984"
     restart: unless-stopped
     healthcheck:
-      test: curl --fail -s http://localhost:5984/_up || exit 1
+      test: curl --fail -s -u ${COUCHDB_USER}:${COUCHDB_PASSWORD}  http://localhost:5984/_up || exit 1
       start_period: 15s
       interval: 30s
       timeout: 10s
       retries: 3
-      
+
